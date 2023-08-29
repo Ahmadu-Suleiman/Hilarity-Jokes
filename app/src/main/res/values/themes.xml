@@ -1,0 +1,89 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.HilarityJokes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/color_primary_variant</item>
+        <item name="colorPrimaryVariant">@color/color_primary_variant</item>
+        <item name="colorOnPrimary">@color/color_on_primary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/color_primary</item>
+        <item name="colorSecondaryVariant">@color/color_on_primary</item>
+        <item name="colorOnSecondary">@color/color_primary_variant</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowBackground">@color/color_primary</item>
+        <!-- Customize your theme here. -->
+        <item name="fontFamily">@font/normal_font</item>
+        <item name="android:fontFamily">@font/normal_font</item>
+        <item name="android:textColor">@color/color_primary_variant</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="IconStyle">
+        <item name="android:padding">10dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:background">?android:selectableItemBackgroundBorderless</item>
+        <item name="tint">@color/color_primary</item>
+    </style>
+
+    <style name="IconStyleBig">
+        <item name="android:padding">6dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:background">?android:selectableItemBackgroundBorderless</item>
+        <item name="tint">@color/color_primary_variant</item>
+    </style>
+
+    <style name="ToolbarTextStyle">
+        <item name="android:textSize">22sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:ellipsize">middle</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">@font/big_font</item>
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="NavTextStyle">
+        <item name="android:textColor">@color/color_primary_variant</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/normal_font</item>
+    </style>
+
+    <style name="EdittextStyle">
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:drawableTint">@color/color_primary</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColorHint">@color/color_primary</item>
+        <item name="android:fontFamily">@font/big_font</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:hint">@string/search_joke</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:completionThreshold">1</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:drawableStart">@drawable/ic_joke</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:inputType">textNoSuggestions</item>
+        <item name="android:imeOptions">actionSearch|flagNoExtractUi</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="ShowButtonStyle">
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.HilarityJokes.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.HilarityJokes.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

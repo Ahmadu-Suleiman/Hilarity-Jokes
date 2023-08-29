@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Hilarity Jokes</string>
+    <string name="app_ad_id">ca-app-pub-8871922765309216~7838414849</string>
+
+    <string name="menu_home">Home</string>
+    <string name="show_a_random_joke">show a random joke</string>
+    <string name="app_logo">app logo</string>
+    <string name="saved_jokes">Saved Jokes</string>
+    <string name="viewed_jokes">Viewed Jokes</string>
+    <string name="save">save</string>
+    <string name="search_joke">search joke…</string>
+    <string name="no_searched_jokes">no searched jokes</string>
+    <string name="no_viewed_jokes">no viewed jokes</string>
+    <string name="no_saved_jokes">no saved jokes</string>
+    <string name="menu">menu</string>
+    <string name="share">Share</string>
+    <string name="left">left</string>
+    <string name="right">right</string>
+    <string name="insert_funny_joke_here">insert funny joke here…</string>
+    <string name="rate">Rate</string>
+    <string name="about">About</string>
+    <string name="apps">Apps</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="policy">https://www.app-privacy-policy.com/live.php?token=c2xJLKUEt0wpA3ByGf4Zp6vvVIyI08tN</string>
+    <string name="about_info">Hilarity Jokes: Unleash laughter with our app! Enjoy a collection of witty jokes that will tickles your funny bone and brighten your day</string>
+    <string name="ad">ad</string>
+</resources>

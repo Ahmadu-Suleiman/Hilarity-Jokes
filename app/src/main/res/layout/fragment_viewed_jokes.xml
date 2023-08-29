@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ViewedJokesFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/viewed_jokes_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/curved_outline"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_no_viewed_jokes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/no_viewed_jokes"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/viewed_jokes_recyclerview"
+        app:layout_constraintEnd_toEndOf="@+id/viewed_jokes_recyclerview"
+        app:layout_constraintStart_toStartOf="@+id/viewed_jokes_recyclerview"
+        app:layout_constraintTop_toTopOf="@+id/viewed_jokes_recyclerview"
+        tools:visibility="visible" />
+</androidx.constraintlayout.widget.ConstraintLayout>
