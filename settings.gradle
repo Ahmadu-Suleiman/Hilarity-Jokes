@@ -14,3 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Hilarity Jokes"
 include ':app'
+include ':nativetemplates'

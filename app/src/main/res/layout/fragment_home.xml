@@ -13,7 +13,7 @@
         android:layout_margin="8dp"
         android:background="@drawable/curved_outline"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/button_show_random_joke"
+        app:layout_constraintBottom_toTopOf="@+id/native_ad_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -59,20 +59,28 @@
         </ScrollView>
     </LinearLayout>
 
+    <com.google.android.ads.nativetemplates.TemplateView
+        android:id="@+id/native_ad_main"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:gnt_template_type="@layout/gnt_small_template_view"
+        app:layout_constraintBottom_toTopOf="@+id/button_show_random_joke"
+        app:layout_constraintEnd_toEndOf="@+id/content_layout"
+        app:layout_constraintStart_toStartOf="@+id/content_layout" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_show_random_joke"
         style="@style/ShowButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/curved_solid"
         android:gravity="center"
         android:text="@string/show_a_random_joke"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/content_layout"
-        app:layout_constraintStart_toStartOf="@+id/content_layout"
-        app:layout_constraintTop_toBottomOf="@+id/content_layout" />
+        app:layout_constraintStart_toStartOf="@+id/content_layout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
