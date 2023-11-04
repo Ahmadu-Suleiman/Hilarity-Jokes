@@ -9,6 +9,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ShareCompat.IntentBuilder
+import androidx.fragment.app.Fragment
+import com.google.android.ads.nativetemplates.TemplateView
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdLoader
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.nativead.NativeAd
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.meta4projects.hilarityjokes.R
@@ -30,7 +36,7 @@ object Utils {
     const val JOKE_EXTRA = "com.meta4projects.hilarityjokes.JokeExtra"
     private const val endPointJoke = "https://icanhazdadjoke.com/"
     private const val endPointJokeSearch = "https://icanhazdadjoke.com/search"
-    const val TAG: String="Hilarity TAG"
+    const val TAG: String = "Hilarity TAG"
 
     @JvmStatic
     var okHttpClient: OkHttpClient? = null
@@ -122,5 +128,19 @@ object Utils {
     @JvmStatic
     fun getDialogView(context: Context?, view: View?): AlertDialog {
         return AlertDialog.Builder(context!!).setView(view).create()
+    }
+
+    @JvmStatic
+    fun loadNativeAd(fragment: Fragment, templateView: TemplateView, adUnitId: String?) {
+        templateView.visibility = View.GONE
+        val adLoader = AdLoader.Builder(fragment.requireContext(), adUnitId!!).forNativeAd { nativeAd: NativeAd ->
+            templateView.setNativeAd(nativeAd)
+            if (fragment.isAdded && fragment.requireActivity().isDestroyed) nativeAd.destroy()
+        }.withAdListener(object : AdListener() {
+            override fun onAdLoaded() {
+                templateView.visibility = View.VISIBLE
+            }
+        }).build()
+        adLoader.loadAd(AdRequest.Builder().build())
     }
 }

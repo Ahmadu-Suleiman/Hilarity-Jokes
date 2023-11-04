@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
 
-@Database(entities = [Joke::class], version = 1, exportSchema = true)
+@Database(entities = [Joke::class], version = 2, exportSchema = true)
 abstract class JokeDatabase : RoomDatabase() {
     abstract fun jokeDao(): JokeDao
 

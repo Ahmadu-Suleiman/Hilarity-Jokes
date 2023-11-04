@@ -2,9 +2,12 @@
     <string name="app_name">Hilarity Jokes</string>
     <string name="app_ad_id">ca-app-pub-8871922765309216~2570402609</string>
 
-
     <string name="main_native">ca-app-pub-8871922765309216/5921617964</string>
+    <string name="saved_jokes_native">ca-app-pub-8871922765309216/3840096131</string>
+    <string name="viewed_jokes_native">ca-app-pub-8871922765309216/4905765798</string>
     <string name="main_interstitial">ca-app-pub-8871922765309216/1982372954</string>
+    <string name="saved_joke_interstitial">ca-app-pub-8871922765309216/7340357446</string>
+    <string name="viewed_joke_interstitial">ca-app-pub-8871922765309216/7469770838</string>
 
     <string name="menu_home">Home</string>
     <string name="show_a_random_joke">show a random joke</string>

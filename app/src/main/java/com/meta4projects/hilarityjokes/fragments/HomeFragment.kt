@@ -10,19 +10,17 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import com.google.android.ads.nativetemplates.TemplateView
 import com.google.android.gms.ads.AdError
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
-import com.google.android.gms.ads.nativead.NativeAd
 import com.meta4projects.hilarityjokes.R
 import com.meta4projects.hilarityjokes.others.Utils.getRandomJokeFromJson
 import com.meta4projects.hilarityjokes.others.Utils.getRequestJoke
 import com.meta4projects.hilarityjokes.others.Utils.isNotification
 import com.meta4projects.hilarityjokes.others.Utils.joke
+import com.meta4projects.hilarityjokes.others.Utils.loadNativeAd
 import com.meta4projects.hilarityjokes.others.Utils.okHttpClient
 import com.meta4projects.hilarityjokes.others.Utils.shareText
 import com.meta4projects.hilarityjokes.others.Utils.showToast
@@ -59,7 +57,7 @@ class HomeFragment : Fragment() {
 
         val templateView: TemplateView = view.findViewById(R.id.native_ad_main)
         loadInterstitial()
-        loadNativeAd(templateView, getString(R.string.main_native))
+        loadNativeAd(this, templateView, getString(R.string.main_native))
         return view
     }
 
@@ -113,18 +111,5 @@ class HomeFragment : Fragment() {
                 }
             }
         })
-    }
-
-    private fun loadNativeAd(templateView: TemplateView, adUnitId: String?) {
-        templateView.visibility = View.GONE
-        val adLoader = AdLoader.Builder(requireContext(), adUnitId!!).forNativeAd { nativeAd: NativeAd ->
-            templateView.setNativeAd(nativeAd)
-            if (isAdded && requireActivity().isDestroyed) nativeAd.destroy()
-        }.withAdListener(object : AdListener() {
-            override fun onAdLoaded() {
-                templateView.visibility = View.VISIBLE
-            }
-        }).build()
-        adLoader.loadAd(AdRequest.Builder().build())
     }
 }

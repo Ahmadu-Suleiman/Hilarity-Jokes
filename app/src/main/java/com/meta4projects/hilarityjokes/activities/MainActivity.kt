@@ -13,7 +13,13 @@ import androidx.core.app.ShareCompat.IntentBuilder
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.navigation.NavigationView
 import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -39,6 +45,8 @@ class MainActivity : AppCompatActivity() {
     private var reviewInfo: ReviewInfo? = null
     private lateinit var consentInformation: ConsentInformation
     private var isMobileAdsInitializeCalled = AtomicBoolean(false)
+    private var interstitialAdSaved: InterstitialAd? = null
+    private var interstitialAdViewed: InterstitialAd? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -51,13 +59,22 @@ class MainActivity : AppCompatActivity() {
         imageViewSearch.setOnClickListener { startActivity(Intent(this@MainActivity, SearchActivity::class.java)) }
         imageViewToggle.setOnClickListener { if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawer(GravityCompat.START, true) else drawer.openDrawer(GravityCompat.START, true) }
         navigationView.setNavigationItemSelectedListener { item: MenuItem ->
-            val id = item.itemId
-            if (id == R.id.nav_home) setFragment(HomeFragment()) else if (id == R.id.nav_saved) setFragment(SavedJokesFragment()) else if (id == R.id.nav_viewed) setFragment(ViewedJokesFragment()) else if (id == R.id.apps) showApps() else if (id == R.id.about) showAboutDialog() else if (id == R.id.rate) rate() else if (id == R.id.share_app) shareApp()
+            when (item.itemId) {
+                R.id.nav_home -> setFragment(HomeFragment())
+                R.id.nav_saved -> if (interstitialAdSaved != null) interstitialAdSaved!!.show(this@MainActivity) else setFragment(SavedJokesFragment())
+                R.id.nav_viewed -> if (interstitialAdViewed != null) interstitialAdViewed!!.show(this@MainActivity) else setFragment(ViewedJokesFragment())
+                R.id.apps -> showApps()
+                R.id.about -> showAboutDialog()
+                R.id.rate -> rate()
+                R.id.share_app -> shareApp()
+            }
             drawer.closeDrawer(GravityCompat.START, true)
             true
         }
         updateAndReview()
         consentForAds()
+        loadInterstitialSaved()
+        loadInterstitialViewed()
     }
 
     private fun consentForAds() {
@@ -146,5 +163,59 @@ class MainActivity : AppCompatActivity() {
         val view = LayoutInflater.from(this).inflate(R.layout.layout_about, findViewById(R.id.about_dialog), false)
         val dialogAbout = getDialogView(this, view)
         dialogAbout.show()
+    }
+
+    private fun loadInterstitialSaved() {
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(this, getString(R.string.saved_joke_interstitial), adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+                interstitialAdSaved = null
+                loadInterstitialSaved()
+            }
+
+            override fun onAdLoaded(interstitial: InterstitialAd) {
+                interstitialAdSaved = interstitial
+                interstitialAdSaved!!.fullScreenContentCallback = object : FullScreenContentCallback() {
+                    override fun onAdDismissedFullScreenContent() {
+                        setFragment(SavedJokesFragment())
+                    }
+
+                    override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+                        setFragment(SavedJokesFragment())
+                    }
+
+                    override fun onAdShowedFullScreenContent() {
+                        interstitialAdSaved = null
+                    }
+                }
+            }
+        })
+    }
+
+    private fun loadInterstitialViewed() {
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(this, getString(R.string.viewed_joke_interstitial), adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+                interstitialAdViewed = null
+                loadInterstitialViewed()
+            }
+
+            override fun onAdLoaded(interstitial: InterstitialAd) {
+                interstitialAdViewed = interstitial
+                interstitialAdViewed!!.fullScreenContentCallback = object : FullScreenContentCallback() {
+                    override fun onAdDismissedFullScreenContent() {
+                        setFragment(ViewedJokesFragment())
+                    }
+
+                    override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+                        setFragment(ViewedJokesFragment())
+                    }
+
+                    override fun onAdShowedFullScreenContent() {
+                        interstitialAdViewed = null
+                    }
+                }
+            }
+        })
     }
 }
