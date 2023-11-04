@@ -28,8 +28,8 @@
 
 **Overall, Hilarity Jokes: Wit & Laughs is a great app for anyone who loves to laugh. It is easy to use and has a large database of jokes to choose from.**
 
-Downlaod here https://play.google.com/store/apps/details?id=com.meta4projects.hilarityjokes
+Download from here https://play.google.com/store/apps/details?id=com.meta4projects.hilarityjokes
 
-![app-mockup-android-screenshot-1-default-1080x1920-1](https://github.com/Ahmadu-Suleiman/Hilarity-Jokes/assets/81268745/38e1a4e0-aabe-4246-9848-46d7eaab2bb9)
+<img width="300" height="550" alt="Screenshot 2023-11-04 160340" src="https://github.com/Ahmadu-Suleiman/Hilarity-Jokes/assets/81268745/38e1a4e0-aabe-4246-9848-46d7eaab2bb9">
 
-![app-mockup-android-screenshot-1-default-1080x1920-7](https://github.com/Ahmadu-Suleiman/Hilarity-Jokes/assets/81268745/615832b0-6d8b-483f-9236-db992e49fcc8)
+<img width="300" height="550" alt="Screenshot 2023-11-04 160340" src="https://github.com/Ahmadu-Suleiman/Hilarity-Jokes/assets/81268745/615832b0-6d8b-483f-9236-db992e49fcc8">
