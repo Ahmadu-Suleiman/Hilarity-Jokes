@@ -1,5 +1,6 @@
 package com.meta4projects.hilarityjokes.activities
 
+import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -20,6 +21,7 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.google.android.gms.tasks.Task
 import com.google.android.material.navigation.NavigationView
 import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -28,7 +30,6 @@ import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManagerFactory
-import com.google.android.play.core.tasks.Task
 import com.google.android.ump.ConsentInformation
 import com.google.android.ump.ConsentRequestParameters
 import com.google.android.ump.UserMessagingPlatform
@@ -132,6 +133,7 @@ class MainActivity : AppCompatActivity() {
         if (reviewInfo != null) reviewManager.launchReviewFlow(this, reviewInfo!!)
     }
 
+    @SuppressLint("CommitTransaction")
     private fun setFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.layout_container, fragment).commit()
     }
@@ -141,11 +143,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun rate() {
-        try {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
-        } catch (e: ActivityNotFoundException) {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=$packageName")))
-        }
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=$packageName")))
     }
 
     private fun shareApp() {

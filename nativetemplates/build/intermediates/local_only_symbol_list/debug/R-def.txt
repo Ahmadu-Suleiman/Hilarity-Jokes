@@ -16,7 +16,6 @@ dimen gnt_ad_indicator_width
 dimen gnt_default_margin
 dimen gnt_no_margin
 dimen gnt_no_size
-dimen gnt_small_margin
 dimen gnt_text_row_weight
 dimen gnt_text_size_large
 dimen gnt_text_size_small

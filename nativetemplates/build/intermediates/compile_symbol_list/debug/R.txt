@@ -14,7 +14,6 @@ int dimen gnt_ad_indicator_width 0x0
 int dimen gnt_default_margin 0x0
 int dimen gnt_no_margin 0x0
 int dimen gnt_no_size 0x0
-int dimen gnt_small_margin 0x0
 int dimen gnt_text_row_weight 0x0
 int dimen gnt_text_size_large 0x0
 int dimen gnt_text_size_small 0x0
